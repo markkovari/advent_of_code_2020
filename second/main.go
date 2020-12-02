@@ -26,6 +26,15 @@ func violatedPasswordPolicy(pp PasswordPolicy) bool {
 	return pp.min <= containsTimes && containsTimes <= pp.max
 }
 
+func violatedPasswordPolicyCorrected(pp PasswordPolicy) bool {
+	lettersOfPassword := strings.Split(pp.password, "")
+	firstAsRune, _ := utf8.DecodeRuneInString(lettersOfPassword[pp.min-1])
+	sedondAsRune, _ := utf8.DecodeRuneInString(lettersOfPassword[pp.max-1])
+	firstMaches := firstAsRune == pp.charShouldCointain
+	secondMaches := sedondAsRune == pp.charShouldCointain
+	return (firstMaches || secondMaches) && !(firstMaches && secondMaches)
+}
+
 func fromLine(line string) (pp PasswordPolicy, err error) {
 	lineParts := strings.Split(line, " ")
 	pp.password = lineParts[2]
@@ -73,10 +82,16 @@ func init() {
 
 func main() {
 	sumOfViolatedPasswordPolicies := 0
+	sumOfCorrectedPolicyViolationCount := 0
 	for _, policy := range passwordPolicies {
 		if violatedPasswordPolicy(policy) {
 			sumOfViolatedPasswordPolicies += 1
 		}
+		if violatedPasswordPolicyCorrected(policy) {
+			sumOfCorrectedPolicyViolationCount += 1
+		}
 	}
 	println(sumOfViolatedPasswordPolicies)
+	println(sumOfCorrectedPolicyViolationCount)
+
 }
