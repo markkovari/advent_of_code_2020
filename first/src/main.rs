@@ -1,6 +1,4 @@
 fn main() {
-    println!("Hello, world!");
-
     let expenses = vec![
         1706, 1466, 1427, 1744, 1684, 1386, 2001, 1750, 1753, 1770, 1559, 1616, 1408, 1860, 1940,
         2002, 1862, 1918, 1456, 1209, 1840, 1462, 1783, 1644, 1901, 1791, 1506, 2005, 1338, 1383,
@@ -17,14 +15,21 @@ fn main() {
         1488, 1736, 1743, 1459, 1389, 1498, 1663, 1611, 1727, 1699, 1624, 1511, 1767, 1754, 1785,
         1491, 1235, 1510, 1500, 1485,
     ];
+    let cloned_expenses = expenses.clone();
     let pairs = get_sum_pairs(expenses, 2020, true);
     for pair in pairs {
         println!("{:?} and {:?}", pair.0, pair.1);
         println!(" multiplied {:?}", pair.0 * pair.1);
     }
+    let triplets = get_sum_triplets(cloned_expenses, 2020, true);
+    for triplet in triplets {
+        println!("{:?} and {:?} and  {:?}", triplet.0, triplet.1, triplet.2);
+        println!(" multiplied {:?}", triplet.0 * triplet.1 * triplet.2);
+    }
 }
 
 struct SumPair(u32, u32);
+struct SumTriplet(u32, u32, u32);
 
 fn get_sum_pairs(numbers: Vec<u32>, sum_to: u32, stop_at_first: bool) -> Vec<SumPair> {
     let mut sum_pairs: Vec<SumPair> = Vec::new();
@@ -43,4 +48,24 @@ fn get_sum_pairs(numbers: Vec<u32>, sum_to: u32, stop_at_first: bool) -> Vec<Sum
         }
     }
     return sum_pairs;
+}
+
+fn get_sum_triplets(numbers: Vec<u32>, sum_to: u32, stop_at_first: bool) -> Vec<SumTriplet> {
+    let mut sum_triplets: Vec<SumTriplet> = Vec::new();
+    let outer_numbers = numbers.clone();
+    let inner_numbers = numbers.clone();
+    let innerer_numbers = numbers.clone();
+    'outer: for out in outer_numbers {
+        for inn in &inner_numbers {
+            for inner in &innerer_numbers {
+                if inner + inn + out == sum_to {
+                    sum_triplets.push(SumTriplet(*inner, *inn, out));
+                    if stop_at_first {
+                        break 'outer;
+                    }
+                }
+            }
+        }
+    }
+    return sum_triplets;
 }
