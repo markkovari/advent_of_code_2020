@@ -193,7 +193,7 @@
 17-18 d: dddddddddddddddwfd
 2-3 m: mrhmmm
 3-15 l: zmvlldsrflxfhlll
-6-10 z: zzzzzzzzz
+6-10 z: zzzzztzzzz
 4-5 j: sbrjj
 4-9 s: hdssssbkmsrrkw
 16-17 d: ddddddddddzddddbdd
@@ -997,4 +997,4 @@
 3-6 h: hhhhmhhhhhw
 6-7 q: vgldrqp
 4-7 p: npzgpppdpjj
-6-7 w: wwwwwwqwwt
+6-7 w: wwwwwwqww
