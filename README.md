@@ -12,6 +12,7 @@ Rules: subsets does not work (like typescript/javascript, you have to pick one)
 | [02](https://github.com/markkovari/advent_of_code_2020/tree/main/02) | go(lang) | [Description](https://adventofcode.com/2020/day/2) |
 | [03](https://github.com/markkovari/advent_of_code_2020/tree/main/03) |   bash   | [Description](https://adventofcode.com/2020/day/3) |
 | [04](https://github.com/markkovari/advent_of_code_2020/tree/main/04) |   dart   | [Description](https://adventofcode.com/2020/day/4) |
+| [05](https://github.com/markkovari/advent_of_code_2020/tree/main/05) |   ruby   | [Description](https://adventofcode.com/2020/day/5) |
 
 
 <!--                                                                 | [01](https://github.com/markkovari/advent_of_code_2020/tree/main/) |                                           language | [Description](https://adventofcode.com/2020/day/) | -->
